@@ -378,6 +378,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/perfboostsconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfboostsconfig.xml \
 
+# Qualcomm
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/privapp-permissions-oem.xml:system/etc/permissions/privapp-permissions-oem.xml \
+    $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfigs/qti_whitelist.xml
+
 # QMI
 PRODUCT_PACKAGES += \
     libjson
@@ -394,6 +399,13 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.sh \
     init.target.rc \
     ueventd.qcom.rc
+
+# RCS
+PRODUCT_PACKAGES += \
+    rcs_service_aidl \
+    rcs_service_aidl.xml \
+    rcs_service_api \
+    rcs_service_api.xml
 
 # Recovery
 PRODUCT_PACKAGES += \
@@ -414,6 +426,14 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
     android.hardware.sensors@1.0-service
 
+# Telephony
+PRODUCT_PACKAGES += \
+    ims-ext-common \
+    telephony-ext
+
+PRODUCT_BOOT_JARS += \
+    telephony-ext
+
 # Thermal
 PRODUCT_PACKAGES += \
     thermal.msm8996 \
@@ -423,10 +443,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf \
     $(LOCAL_PATH)/configs/thermal-engine-vr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-vr.conf
-
-# Usb HAL
-PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service
 
 # Vibrator
 PRODUCT_PACKAGES += \

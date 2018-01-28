@@ -63,8 +63,9 @@ on enable-low-power
     write /sys/module/msm_thermal/core_control/enabled 1
 
     # Input boost configuration
-    write /sys/module/cpu_boost/parameters/input_boost_freq "0:1324800 2:1324800"
-    write /sys/module/cpu_boost/parameters/input_boost_ms 40
+    write /sys/kernel/cpu_input_boost/ib_freqs "1056000 307400"
+    write /sys/kernel/cpu_input_boost/ib_duration_ms 400
+    write /sys/kernel/cpu_input_boost/enabled 1
 
     # Setting b.L scheduler parameters
     write /proc/sys/kernel/sched_boost 0
@@ -102,11 +103,7 @@ on enable-low-power
     write /sys/module/lpm_levels/parameters/sleep_disabled "N"
 
     # Set idle GPU to 133 Mhz
-    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
-
-    # Enable Adaptive LMK
-    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
-    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
+    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 7
 
     # Set perfd properties
     setprop sys.post_boot.parsed 1

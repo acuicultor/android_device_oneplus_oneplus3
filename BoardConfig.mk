@@ -73,7 +73,7 @@ TARGET_KERNEL_CONFIG := lineageos_oneplus3_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 
 # Add fix for common JACK issues
-ANDROID_JACK_VM_ARGS := -Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4096m
+ANDROID_JACK_VM_ARGS := -Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx5120m
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true

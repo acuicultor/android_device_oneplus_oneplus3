@@ -79,7 +79,7 @@ BOARD_RAMDISK_OFFSET     := 0x02200000
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8996
 TARGET_KERNEL_CONFIG := radioactive_defconfig
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := ../../../../../../prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-kernel/bin/aarch64-linux-android-
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := ../../../../../../prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu-kernel/bin/aarch64-linux-gnu-
 
 # Add fix for common JACK issues
 ANDROID_JACK_VM_ARGS := -Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx5120m

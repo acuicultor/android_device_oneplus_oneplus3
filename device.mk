@@ -249,8 +249,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
    OnePlusCamera \
    OnePlusCameraService \
-   OnePlusGallery \
-   OnePlusRecorder
+   OnePlusGallery    
 
 # DRM
 PRODUCT_PACKAGES += \

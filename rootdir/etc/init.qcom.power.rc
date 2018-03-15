@@ -128,7 +128,10 @@ on enable-low-power
     write /sys/module/lpm_levels/parameters/sleep_disabled "N"
 
     # Set idle GPU to 133 Mhz
-    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
+    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 7
+    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 133000000
+    write /sys/class/kgsl/kgsl-3d0/max_gpuclk 510000000
+    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 510000000
 
     # Disable Adaptive LMK
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 0
@@ -136,19 +139,22 @@ on enable-low-power
     # Set perfd properties
     setprop sys.post_boot.parsed 1
 
-    setprop sys.io.scheduler "zen"
-    write /sys/block/dm-0/queue/scheduler "zen"
-    write /sys/block/dm-1/queue/scheduler "zen"
-    write /sys/block/sda/queue/scheduler "zen"
-    write /sys/block/sde/queue/scheduler "zen"
-    write /sys/block/dm-0/queue/read_ahead_kb 512
-    write /sys/block/dm-1/queue/read_ahead_kb 512
-    write /sys/block/sda/queue/read_ahead_kb 512
+    setprop sys.io.scheduler "cfq"
+    write /sys/block/dm-0/queue/scheduler "cfq"
+    write /sys/block/dm-1/queue/scheduler "cfq"
+    write /sys/block/sda/queue/scheduler "cfq"
+    write /sys/block/sde/queue/scheduler "cfq"
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/dm-1/queue/read_ahead_kb 128
+    write /sys/block/sda/queue/read_ahead_kb 128
 	write /sys/block/sda/queue/iostats 1
 	write /sys/block/sda/queue/nr_requests 128
-    write /sys/block/sde/queue/read_ahead_kb 512
+    write /sys/block/sde/queue/read_ahead_kb 128
 	write /sys/block/sde/queue/iostats 1
 	write /sys/block/sde/queue/nr_requests 128
+    write  /sys/block/sda/queue/iosched/back_seek_penalty 4
+    write  /sys/block/sda/queue/iosched/low_latency 0
+    write  /sys/block/sda/queue/iosched/target_latency_us 300
 
     # update cpusets now that boot is complete and we want better load balancing
     write /dev/cpuset/top-app/cpus 0-3
@@ -167,8 +173,11 @@ on charger
     write /sys/class/leds/button-backlight/brightness 0
     start dashd
 
-# Re-enable thermal and BCL hotplug
-    write /sys/module/msm_thermal/core_control/enabled 1
+# Disable thermal and BCL hotplug
+    write  /sys/module/msm_thermal/parameters/enabled Y
+    write  /sys/module/msm_thermal/core_control/enabled 0
+    write  /sys/module/msm_thermal/parameters/temp_threshold 50
+    write  /sys/module/msm_thermal/parameters/core_limit_temp_degC 60
     write /sys/devices/soc/soc:qcom,bcl/mode "disable"
     write /sys/devices/soc/soc:qcom,bcl/hotplug_mask 0
     write /sys/devices/soc/soc:qcom,bcl/hotplug_soc_mask 0

@@ -3,6 +3,7 @@
 #
 
 # ADB at boot
+persist.adb.notify=0
 persist.service.adb.enable=1
 persist.service.debuggable=1
 persist.sys.usb.config=mtp,adb
@@ -225,3 +226,13 @@ ro.qualcomm.display.paneltype=1
 ro.qualcomm.foss=1
 config.foss.xml=1
 config.foss.path=/vendor/etc/FOSSConfig.xml
+
+# Disable Miscellaneous Android Logging Stuff
+debugtool.anrhistory=0
+profiler.debugmonitor=false
+profiler.launch=false
+profiler.hung.dumpdobugreport=false
+
+# Disable Kernel Error Checking
+ro.kernel.android.checkjni=0
+ro.kernel.checkjni=0

@@ -247,11 +247,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     OneplusDoze
 
-# Oneplus Apps
+# Custom apps
 PRODUCT_PACKAGES += \
    OnePlusCamera \
    OnePlusCameraService \
-   OnePlusGallery    
+   OnePlusGallery \
+   GoogleCamera   
 
 # DRM
 PRODUCT_PACKAGES += \

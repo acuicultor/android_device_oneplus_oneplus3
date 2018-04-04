@@ -210,11 +210,11 @@ persist.vendor.radio.data_con_rprt=1
 persist.radio.efssync=true
 #end
 
-# Google DNS
-net.rmnet0.dns1=8.8.8.8
-net.rmnet0.dns2=8.8.4.4
-net.dns1=8.8.8.8
-net.dns2=8.8.4.4
+# Cloudflare DNS
+net.rmnet0.dns1=1.1.1.1
+net.rmnet0.dns2=1.0.0.1
+net.dns1=1.1.1.1
+net.dns2=1.0.0.1
 
 # Assertive Display 1.3
 ro.qcom.ad=1
